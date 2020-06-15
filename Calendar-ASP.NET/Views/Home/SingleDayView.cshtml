@@ -1,0 +1,47 @@
+@model SingleDayModel
+@{
+    ViewData["Title"] = "SingleDayModel";
+}
+
+
+<body>
+    <div class = "month">
+        <ul>
+            <li> @Model.dateOfSingleDay</li>
+        </ul>
+    </div>
+
+    <ul class="weekdays">
+        <li>Time</li>
+        <li>Description</li>
+    </ul>
+
+	<ul class = "days">
+        @for (var i = 0; i < @Model.eventsDuringTheDay.Count(); i++)
+        {
+            <div class="row">
+                <div class="columnTime" style="background-color:#eee; font-weight: normal">
+                    <p style = "font-size: 20px; font-weight: normal;">@Model.eventsDuringTheDay[@i].timeOfEvent</p>
+                </div>
+                <div class = "columnBreak"></div>
+                <div class="columnDescription" style="background-color:#eee;">
+                    <p style = "font-size: 20px; font-weight: normal">@Model.eventsDuringTheDay[@i].descriptionOfEvent</p>
+                </div>
+                <div class="columnButtons" style="background-color:#eee;">
+                    <form method="post">
+                        <button name="action" value= "Edit" class = "buttons">Edit</button>
+                        <input type="hidden" value="@i" name="Id"/>
+                        <button name="action" value= "Delete" class = "buttons">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+
+	</ul>
+	<div>
+		<a href="@Model.dateOfSingleDay-newEvent" class = "buttons">Add new</a>
+        <a href="@Model.monthOfSingleDay.ToString()-@Model.yearOfSingleDay" class = "buttons">Close</a>
+	</div>
+    <br>
+    <br>
+</body>

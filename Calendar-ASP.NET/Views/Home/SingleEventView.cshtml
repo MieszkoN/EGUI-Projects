@@ -1,0 +1,26 @@
+@model SingleEventModel
+@{
+    //ViewData["Title"] = "Single Event Screen";
+    ViewData["Title"] = "SingleEventModel";
+}
+
+
+
+<body>
+<form method="POST">
+	<fieldset class = "fieldset">
+		<label for="timeOfEvent">Time:</label>
+		<input type="time" id="timeOfEvent" name="timeOfEvent" required>
+    	<br><br>
+    	<label for="Description">Description:</label>
+    	<input type="text" id="Description" name = "Description" required>
+        <br><br>
+        
+        <div>
+          <input type="submit" value="Save" class="buttons">
+          <a href = "@Model.dateOfSingleEvent" class = "buttons">Cancel</a>
+        </div>
+    </fieldset>
+</form>
+
+</body>

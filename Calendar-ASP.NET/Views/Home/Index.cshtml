@@ -1,0 +1,47 @@
+﻿@model CalendarModel
+@{
+    ViewData["Title"] = "Calendar";
+}
+
+<body>
+
+<div class="month">      
+  <ul>
+    <li><a class="prev" href="@Model.getPreviousMonth()">&#10094;</a></li>
+    <li><a class="next" href="@Model.getNextMonth()">&#10095;</a></li>
+    <li>
+      @Model.actualMonthWord - @Model.actualYear 
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>S</li>
+  <li>M</li>
+  <li>T</li>
+  <li>W</li>
+  <li>T</li>
+  <li>F</li>
+  <li>Sa</li>
+</ul>
+
+<ul class="days"> 
+  @for(var i = @Model.daysInPreviousMonth - @Model.firstDayOfMonth+1; i <= @Model.daysInPreviousMonth; i++) {
+    <li><a href = "@Model.getPreviousMonth()" class="other">@i</a></li>
+  }
+
+  @for(var i = 1; i <= @Model.daysInMonth; i++) {
+    @if(@Model.daysWithEvents.Contains(@i.ToString()+"-"+@Model.actualMonth.ToString()+"-"+@Model.actualYear.ToString())) {
+      <li><a href = "@i.ToString()-@Model.actualMonth.ToString()-@Model.actualYear" class ="current"> <span class="active">@i</span>  </a></li>
+    } else {
+      <li><a href = "@i.ToString()-@Model.actualMonth.ToString()-@Model.actualYear" class ="current">@i</a></li>
+    }
+  }
+
+  @for(var i = 1; i <= 7-(@Model.firstDayOfMonth+@Model.daysInMonth)%7; i++) {
+    <li><a href = "@Model.getNextMonth()" class="other">@i</a></li>
+  }
+</ul>
+
+</body>
+</html>
