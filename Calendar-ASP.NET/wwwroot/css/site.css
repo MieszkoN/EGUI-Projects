@@ -1,0 +1,230 @@
+﻿html {
+  position: relative;
+  min-height: 100%;
+}
+
+a {
+  text-decoration: none !important
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  margin-bottom: 90px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; 
+}
+
+*{box-sizing: border-box;}
+ul {list-style-type: none;}
+body {font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;}
+p {font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;}
+
+
+.date {
+  padding: 50px 25px;
+  width: 100%;
+  background: #E76642;
+  text-align: center;
+  font-size: 60 px;
+  color: white;
+}
+
+.buttons {
+  background: #E76642;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.fieldset {
+	border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+.singleday {
+  padding: 10px 0;
+  background: #eee;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.singleday li {
+  list-style-type: none;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.singleday li .time{
+  width: 14%;
+}
+
+.singleday .description {
+  width: 50%;
+}
+
+
+.columnTime {
+  float: left;
+  text-align: center;
+  width: 15%;
+  padding: 20px 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 20 px;
+ 
+}
+
+.columnDescription {
+  float: left;
+  width: 50%;
+  padding: 20px 0;
+}
+
+.columnBreak {
+  float:left;
+  width: 3%;
+}
+
+.columnButtons {
+  float: left;
+  text-align: center;
+  width: 15%;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.month {
+  padding: 50px 25px;
+  width: 100%;
+  background: #E76642;
+  text-align: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  color: white;
+  float: left;
+  padding-top: 10px;
+}
+
+.month .next {
+  color: white;
+  float: right;
+  padding-top: 10px;
+}
+
+.weekdays {
+  margin: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #010712;
+}
+
+.weekdays li {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 24px;
+  width: 14%;
+  color: white;
+  text-align: center;
+}
+
+.days {
+  padding: 10px 0;
+  background: #eee;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 14%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.days li .other {
+  font-weight: lighter;
+  color: #b0b0b0!important
+}
+
+.current {
+  font-weight: normal;
+  color: #010712 !important
+}
+
+.days li .active {
+  padding: 5px;
+  background: #03bafc;
+  color: white !important
+}
+
+
+@media screen and (max-width:720px) {
+  .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li, .days li {width: 13%;}
+  .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li, .days li {width: 13%;}
+}
+
+@media screen and (max-width: 1150px) {
+	.weekdays li, .days li {width: 13%;}
+  .days li .active {padding: 2px;}
+}
+@media screen and (max-width: 900px) {
+	.weekdays li, .days li {width: 13%;}
+  .days li .active {padding: 2px;}
+}
+
+
+@media screen and (max-width: 500px) {
+  .weekdays li, .days li {width: 13%;}
+  .days li .active {padding: 2px;}
+}
+@media screen and (max-width: 350px) {
+	.weekdays li, .days li {width: 13%;}
+  .days li .active {padding: 2px;}
+  .column2 {width:20%}
+}
