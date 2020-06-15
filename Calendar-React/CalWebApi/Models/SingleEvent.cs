@@ -9,8 +9,10 @@ namespace CalendarWebApi.Models
 {
     public class SingleEvent {
         public int id {get; set;}
+        public string dateOfEvent {get; set;}
         public string timeOfEvent{ get; set; }
         public string description{ get; set; }
+
     }
 
 }
