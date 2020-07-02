@@ -87,7 +87,7 @@ export default class Calendar extends Component {
                     m=m-1;
                 }
                 var d = new Date(y, m, 0).getDate();
-                daysInPrevMonth.push(<td className = "daysOtherMonth">
+                daysInPrevMonth.push(<td className = "daysOtherMonth" key = {d-this.firstDayOfMonth()+i+1+"-"+this.month()+"-"+this.year()+"prevmonth"}>
                     <span>{d-this.firstDayOfMonth()+i+1}</span>
                 </td>
             );
@@ -96,7 +96,7 @@ export default class Calendar extends Component {
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
             daysInMonth.push(
-                <td key={d} className="day">
+                <td key={d+"-"+this.month()+"-"+this.year()} className="day">
                    <span><Link className="dayLink" to={{ pathname: '/singleDay', state: { foo: d+"-"+this.month()+"-"+this.year()} }}>{d}</Link></span>
                 </td>
             );
@@ -106,7 +106,7 @@ export default class Calendar extends Component {
         var iter = 7-(daysInMonth.length+daysInPrevMonth.length)%7;
         for (let d = 1; d <= iter; d++) {
             daysInNextMonth.push(
-                <td className="daysOtherMonth">
+                <td className="daysOtherMonth" key ={d+"-"+this.month()+"-"+this.year()+"nextmonth"}>
                     <span>{d}</span>
                 </td>
             );
