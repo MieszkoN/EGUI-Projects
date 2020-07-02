@@ -11,15 +11,11 @@ using System.Web;
 using System.Net.Http;
 using System.Net;
 using System.Text;
-//using System.Web.Cors;
 
 namespace CalendarWebApi.Controllers
 {
-    //[EnableCors("MyPolicy")]
-    //[EnableCors("AllowMyOrigin")]
     [ApiController]
     [Route("api/allEvents")]
-    //[EnableCors(origins: "http://www.example.com", headers: "*", methods: "*")]
     public class DayEvents : ControllerBase{
         public List<SingleEvent> allEvents = new List<SingleEvent>();
 
@@ -39,8 +35,9 @@ namespace CalendarWebApi.Controllers
                         SingleEvent oneEvent = new SingleEvent();
 		                string[] strlist = line.Split(separator,  StringSplitOptions.RemoveEmptyEntries);
                         oneEvent.id = Int32.Parse(strlist[0]);
-                        oneEvent.timeOfEvent = strlist[1].Substring(0, 5);
-                        oneEvent.description = strlist[2];
+                        oneEvent.dateOfEvent = strlist[1];
+                        oneEvent.timeOfEvent = strlist[2];
+                        oneEvent.description = strlist[3];
                         allEvents.Add(oneEvent);
                     }
                     allEvents.Sort(delegate(SingleEvent s1, SingleEvent s2)
@@ -63,7 +60,7 @@ namespace CalendarWebApi.Controllers
             try {
                 using (StreamWriter streamW = new System.IO.StreamWriter("myFile.txt")) {
                     foreach (SingleEvent s in allEvents) {
-                        streamW.WriteLine(s.id.ToString() + "@#%*!"+ s.timeOfEvent.ToString()+ "@#%*!" +s.description.ToString());
+                        streamW.WriteLine(s.id.ToString()+"@#%*!"+ s.dateOfEvent.ToString() + "@#%*!"+ s.timeOfEvent.ToString()+ "@#%*!" +s.description.ToString());
                     }
                 }
             }
@@ -80,9 +77,7 @@ namespace CalendarWebApi.Controllers
         }
 
         [HttpPost]
-        //[ActionName("ActionApi")]
         [ActionName("POST")]
-       // [Route("api/allEvents/add")]
         public SingleEvent Post([FromBody]SingleEvent ev)
         {
             readFromFile();
@@ -98,8 +93,6 @@ namespace CalendarWebApi.Controllers
         public SingleEvent Put([FromBody]SingleEvent ev)
         {
             readFromFile();
-            //ev.id = allEvents.Count();
-            //allEvents.Add(ev);
             foreach(SingleEvent se in allEvents) {
                 if(ev.id == se.id) {
                     se.timeOfEvent = ev.timeOfEvent;
@@ -116,8 +109,6 @@ namespace CalendarWebApi.Controllers
         public string Delete([FromBody]SingleEvent ev)
         {
             readFromFile();
-            //ev.id = allEvents.Count();
-            //allEvents.Add(ev);
             for(int i = 0; i < allEvents.Count(); i++) {
                 if(allEvents[i].id == ev.id) {
                     allEvents.RemoveAt(i);
